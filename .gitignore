@@ -33,11 +33,15 @@ config/database.json
 **/aliyun-config.json
 **/oss.properties
 
-# 所有包含 AccessKey 的文件
-**/*accesskey*
-**/*AccessKey*
-**/*access-key*
-**/*Access-Key*
+# 所有包含 AccessKey 的配置文件（排除源代码目录）
+**/config/*accesskey*
+**/config/*AccessKey*
+**/config/*access-key*
+**/config/*Access-Key*
+**/*accesskey*.json
+**/*accesskey*.yml
+**/*accesskey*.yaml
+**/*accesskey*.properties
 
 # ======================
 # 第三方 API 凭证
@@ -50,18 +54,28 @@ config/database.json
 **/wechat-pay.json
 **/merchant-config.json
 
-# 所有包含 Secret 的配置文件
-**/*secret*
-**/*Secret*
+# 所有包含 Secret 的配置文件（排除源代码目录）
+**/config/*secret*
+**/config/*Secret*
+**/settings/*secret*
+**/settings/*Secret*
+**/*secret*.json
+**/*secret*.yml
+**/*secret*.yaml
+**/*secret*.properties
 **/*appsecret*
 **/*AppSecret*
-**/*appid*
-**/*AppId*
+**/*appid*.json
+**/*appid*.yml
+**/*appid*.yaml
+**/*AppId*.json
+**/*AppId*.yml
+**/*AppId*.yaml
 
 # ======================
 # 通用敏感信息文件
 # ======================
-# 所有 .env 文件（除了示例文件）
+# 所有 .env 文件（除了示例文件和源代码目录）
 .env
 .env.*
 !.env.example
