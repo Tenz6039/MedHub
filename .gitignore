@@ -232,6 +232,11 @@ coverage/
 **/merchant_cert/
 **/merchant_certs/
 
+# 微信小程序开发配置（包含 AppID，每个开发者需要配置自己的）
+**/project.config.json
+**/project.private.config.json
+**/project.private.*.json
+
 # 商户配置
 **/merchant.properties
 **/merchant-api.json

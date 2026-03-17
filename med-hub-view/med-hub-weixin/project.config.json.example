@@ -49,7 +49,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.17.0",
-  "appid": "wxbe950d256a03da96",
+  "appid": "your-wechat-appid-here",
   "projectname": "med-hub-weixin",
   "editorSetting": {
     "tabIndent": "insertSpaces",
