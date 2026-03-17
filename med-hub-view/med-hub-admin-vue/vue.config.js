@@ -2,6 +2,17 @@ const path = require('path')
 const name = 'Vue Typescript Admin'
 const IS_PROD = ['production', 'development'].includes(process.env.NODE_ENV)
 
+// 加载 .env 文件
+const dotenv = require('dotenv')
+const dotenvExpand = require('dotenv-expand')
+
+const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
+const envFiles = [`.env.${mode}`, '.env']
+
+envFiles.forEach(file => {
+  dotenv.config({ path: file })
+})
+
 module.exports = {
   'publicPath': process.env.NODE_ENV === 'production' ? './' : '/', // TODO: Remember to change this to fit your need
   'lintOnSave': process.env.NODE_ENV === 'development',

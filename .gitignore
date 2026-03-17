@@ -72,15 +72,6 @@ config/database.json
 **/*AppId*.yml
 **/*AppId*.yaml
 
-# ======================
-# 通用敏感信息文件
-# ======================
-# 所有 .env 文件（除了示例文件和源代码目录）
-.env
-.env.*
-!.env.example
-!.env.template
-!.env.sample
 
 # 密钥、令牌、密码文件
 **/keys/
@@ -117,11 +108,6 @@ config/database.json
 **/config-prod.json
 **/config-production.json
 **/config-test.json
-
-# 生产环境配置
-**/.env.production.local
-**/.env.prod
-**/.env.production.local.*
 
 # ======================
 # IDE 和编辑器文件
