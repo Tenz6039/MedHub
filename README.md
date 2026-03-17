@@ -2,12 +2,13 @@
 
 <div align="center">
 
-[![Java](https://img.shields.io/badge/Java-11+-blue.svg)](https://www.oracle.com/java/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7+-brightgreen.svg)](https://spring.io/projects/spring-boot)
-[![Vue.js](https://img.shields.io/badge/Vue.js-2.6-green.svg)](https://vuejs.org/)
-[![MyBatis](https://img.shields.io/badge/MyBatis-2.2-orange.svg)](https://mybatis.org/mybatis-3/)
+[![Java](https://img.shields.io/badge/Java-8+-blue.svg)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.3-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Vue.js](https://img.shields.io/badge/Vue.js-2.6.10-green.svg)](https://vuejs.org/)
+[![MyBatis](https://img.shields.io/badge/MyBatis-2.2.0-orange.svg)](https://mybatis.org/mybatis-3/)
 [![Redis](https://img.shields.io/badge/Redis-6.0-red.svg)](https://redis.io/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-blue.svg)](https://www.mysql.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-12.22.0-lightgrey.svg)](https://nodejs.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **一站式医药电商解决方案 | 前后端分离架构 | 支持 B 端管理和 C 端用户**
