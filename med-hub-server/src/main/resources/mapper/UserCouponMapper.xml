@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medhub.mapper.UserCouponMapper">
+
+    <!-- 结果映射 -->
+    <resultMap id="UserCouponResultMap" type="com.medhub.entity.UserCoupon">
+        <id column="id" property="id"/>
+        <result column="coupon_id" property="couponId"/>
+        <result column="user_id" property="userId"/>
+        <result column="status" property="status"/>
+        <result column="obtain_time" property="obtainTime"/>
+        <result column="use_time" property="useTime"/>
+        <result column="order_id" property="orderId"/>
+        <result column="expire_time" property="expireTime"/>
+        <!-- 优惠券信息字段（关联查询） -->
+        <result column="name" property="couponName"/>
+        <result column="type" property="couponType"/>
+        <result column="min_amount" property="minAmount"/>
+        <result column="discount_value" property="discountValue"/>
+        <result column="max_discount_amount" property="maxDiscountAmount"/>
+        <result column="description" property="description"/>
+        <result column="user_limit" property="userLimit"/>
+        <result column="end_time" property="endTime"/>
+    </resultMap>
+
+    <!-- 新增用户优惠券 -->
+    <insert id="insert" parameterType="com.medhub.entity.UserCoupon" useGeneratedKeys="true" keyProperty="id">
+        insert into user_coupon (
+            coupon_id,
+            user_id,
+            status,
+            obtain_time,
+            expire_time,
+            create_time,
+            update_time
+        ) values (
+            #{couponId},
+            #{userId},
+            #{status},
+            #{obtainTime},
+            #{expireTime},
+            now(),
+            now()
+        )
+    </insert>
+
+    <!-- 更新用户优惠券 -->
+    <update id="update" parameterType="com.medhub.entity.UserCoupon">
+        update user_coupon
+        <set>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="useTime != null">
+                use_time = #{useTime},
+            </if>
+            <if test="orderId != null">
+                order_id = #{orderId},
+            </if>
+            update_time = now()
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 分页查询用户优惠券列表（关联优惠券表） -->
+    <select id="pageQuery" resultMap="UserCouponResultMap">
+        select 
+            uc.id,
+            uc.coupon_id,
+            uc.user_id,
+            uc.status,
+            uc.obtain_time,
+            uc.use_time,
+            uc.order_id,
+            uc.expire_time,
+            c.name,
+            c.type,
+            c.min_amount,
+            c.discount_value,
+            c.max_discount_amount,
+            c.description,
+            c.user_limit,
+            c.end_time
+        from user_coupon uc
+        left join coupon c on uc.coupon_id = c.id
+        <where>
+            uc.user_id = #{userId}
+            <if test="param2.status != null">
+                and uc.status = #{param2.status}
+            </if>
+        </where>
+        order by uc.obtain_time desc
+    </select>
+
+    <!-- 查询用户优惠券详情（关联优惠券表） -->
+    <select id="getDetailById" resultMap="UserCouponResultMap">
+        select 
+            uc.id,
+            uc.coupon_id,
+            uc.user_id,
+            uc.status,
+            uc.obtain_time,
+            uc.use_time,
+            uc.order_id,
+            uc.expire_time,
+            c.name,
+            c.type,
+            c.min_amount,
+            c.discount_value,
+            c.max_discount_amount,
+            c.description
+        from user_coupon uc
+        left join coupon c on uc.coupon_id = c.id
+        where uc.id = #{userCouponId}
+    </select>
+
+    <!-- 查询用户未使用的优惠券（用于下单页） -->
+    <select id="getAvailableForOrder" resultMap="UserCouponResultMap">
+        select 
+            uc.id,
+            uc.coupon_id,
+            uc.user_id,
+            uc.status,
+            uc.obtain_time,
+            uc.use_time,
+            uc.order_id,
+            uc.expire_time,
+            c.name,
+            c.type,
+            c.min_amount,
+            c.discount_value,
+            c.max_discount_amount,
+            c.description
+        from user_coupon uc
+        left join coupon c on uc.coupon_id = c.id
+        where uc.user_id = #{userId}
+          and uc.status = 0
+          and c.status = 1
+          and uc.expire_time > now()
+        order by c.discount_value desc
+    </select>
+
+</mapper>

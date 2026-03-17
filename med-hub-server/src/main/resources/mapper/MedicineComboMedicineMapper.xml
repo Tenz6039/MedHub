@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medhub.mapper.MedicineComboMedicineMapper">
+
+    <select id="getMedicineComboId" resultType="java.lang.Long">
+        select combo_id from medicine_combo_medicine where medicine_id in
+        <foreach collection="list" item="medicineId" open="(" separator="," close=")">
+            #{medicineId}
+        </foreach>
+    </select>
+
+    <insert id="insertBatch" parameterType="list">
+        insert into medicine_combo_medicine
+        (combo_id,medicine_id,name,price,copies)
+        values
+        <foreach collection="medicineComboMedicines" item="mcm" separator=",">
+            (#{mcm.comboId},#{mcm.medicineId},#{mcm.name},#{mcm.price},#{mcm.copies})
+        </foreach>
+    </insert>
+</mapper>

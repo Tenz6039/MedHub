@@ -1,0 +1,84 @@
+.navBar {
+  position: fixed;
+  display: flex;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  height: 304rpx;
+  opacity: 1;
+  background: linear-gradient(
+    184deg,
+    rgba(0, 0, 0, 0.35) 25%,
+    rgba(51, 51, 51, 0) 96%
+  );
+  /* #ifdef H5 */
+  padding-top: 20rpx;
+  /* #endif */
+  
+  // iOS 风格导航栏样式
+  &.ios-nav-bar {
+    background: #FFFFFF;
+    
+    ::v-deep .uni-navbar__content-view {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 600;
+      font-size: 34rpx;
+      letter-spacing: 0;
+      color: #1D1D1F;
+    }
+    
+    ::v-deep .uni-navbar__header-btn {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    }
+  }
+  
+  .leftNav {
+    .back {
+      width: 88rpx;
+      height: 88rpx;
+    }
+  }
+  .centerNav {
+    width: calc(100vw - 176rpx);
+    text-align: center;
+    line-height: 88rpx;
+    font-size: $uni-font-size-lg;
+    color: #fff;
+    font-weight: 600;
+  }
+  .logo {
+    height: 66rpx;
+    width: 184rpx;
+  }
+
+  .index_bg {
+    width: 750rpx;
+    height: 304rpx;
+  }
+
+  .test_image {
+    height: 56rpx;
+    width: 56rpx;
+  }
+  .person-box{
+    position: fixed;
+    left: 38rpx;
+    z-index: 9999;
+		top:100rpx ;
+    display: flex;
+    align-items: center;
+  }
+  .person-title{
+    flex: 1;
+    height: 36rpx;
+    font-size: 26rpx;
+    font-weight: 500;
+    text-align: left;
+    color: #ffffff;
+    line-height: 36rpx;
+    letter-spacing: 0px;
+    margin-left: 14rpx;
+  }
+}

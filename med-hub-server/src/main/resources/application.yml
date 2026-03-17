@@ -1,0 +1,59 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${med-hub.datasource.driver-class-name}
+      url: jdbc:mysql://${med-hub.datasource.host}:${med-hub.datasource.port}/${med-hub.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${med-hub.datasource.username}
+      password: ${med-hub.datasource.password}
+  redis:
+    host: ${med-hub.redis.host}
+    port: ${med-hub.redis.port}
+    password:
+    database: ${med-hub.redis.database}
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.medhub.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      medhub:
+        mapper: debug
+        service: info
+        controller: info
+
+med-hub:
+  jwt:
+    # 设置 jwt 签名加密时使用的秘钥
+    admin-secret-key: itcast
+    # 设置 jwt 过期时间
+    admin-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: itcast
+    # 设置 jwt 过期时间
+    user-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    user-token-name: authentication
+  alioss:
+    endpoint: ${med-hub.alioss.endpoint}
+    access-key-id: ${med-hub.alioss.access-key-id}
+    access-key-secret: ${med-hub.alioss.access-key-secret}
+    bucket-name: ${med-hub.alioss.bucket-name}
+  wechat:
+    appid: ${med-hub.wechat.appid}
+    secret: ${med-hub.wechat.secret}
+  swagger:
+    enabled: false

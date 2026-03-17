@@ -1,0 +1,163 @@
+{
+  "pages": [{
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "购药"
+      }
+    },
+    {
+      "path": "pages/activity/activity",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "活动"
+      }
+    },
+    {
+      "path": "pages/couponActivity/couponActivity",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "领取优惠券",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/myCoupons/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的优惠券",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/order/index",
+      "style": {
+				"navigationStyle": "custom",
+        "navigationBarTitleText": "提交订单",
+        "enablePullDownRefresh": false,
+        "navigationBarBackgroundColor": "#333333"
+
+      }
+    },
+	{
+	  "path": "pages/details/index",
+	  "style": {
+			"navigationStyle": "custom",
+	    "navigationBarTitleText": "订单详情",
+	    "enablePullDownRefresh": false,
+	    "navigationBarBackgroundColor": "#333333"
+	
+	  }
+	},
+	{
+	  "path": "pages/pay/index",
+	  "style": {
+	    "navigationBarTitleText": "支付订单",
+	    "enablePullDownRefresh": false,
+	    "navigationBarBackgroundColor": "#333333"
+	  }
+	},
+    {
+      "path": "pages/success/index",
+      "style": {
+        "navigationBarTitleText": "提交成功",
+        "enablePullDownRefresh": false,
+        "navigationBarBackgroundColor": "#333333"
+      }
+    },
+    {
+      "path": "pages/nonet/index",
+      "style": {
+        "navigationBarTitleText": "无网络"
+      }
+    }, {
+      "path": "pages/address/address",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "地址管理",
+        "enablePullDownRefresh": false,
+        "navigationBarBackgroundColor": "#333333"
+      }
+    },{
+      "path": "pages/remark/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "订单备注",
+        "enablePullDownRefresh": false,
+        "navigationBarBackgroundColor": "#333333"
+      }
+    },
+    {
+      "path": "pages/my/my",
+      "style": {
+				"navigationStyle": "custom",
+        "navigationBarTitleText": "个人中心",
+        "enablePullDownRefresh": false,
+        "navigationBarBackgroundColor": "#007AFF"
+      }
+    },
+    {
+      "path": "pages/addOrEditAddress/addOrEditAddress",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "新增收获地址",
+        "enablePullDownRefresh": false,
+        "navigationBarBackgroundColor": "#333333"
+      }
+
+    },
+    {
+      "path": "pages/historyOrder/historyOrder",
+      "style": {
+				"navigationStyle": "custom",
+        "navigationBarTitleText": "历史订单",
+        "enablePullDownRefresh": false,
+        "navigationBarBackgroundColor": "#333333"
+
+      }
+    }
+    ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "智慧购药平台",
+    "navigationBarBackgroundColor": "#E95F3C",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#8E8E93",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "height": "110rpx",
+    "fontSize": "20rpx",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "购药",
+        "iconPath": "static/tab/medicine.png",
+        "selectedIconPath": "static/tab/medicine_active.png"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "活动",
+        "iconPath": "static/tab/activity.png",
+        "selectedIconPath": "static/tab/activity_active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "个人",
+        "iconPath": "static/tab/my.png",
+        "selectedIconPath": "static/tab/my_active.png"
+      }
+    ]
+  },
+  "condition": { 
+    "current": 0, 
+    "list": [{
+      "name": "历史订单", 
+      "path": "pages/historyOrder/historyOrder", 
+      "query": "" 
+    }]
+  }
+  
+}

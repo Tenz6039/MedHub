@@ -1,0 +1,104 @@
+/**
+ * iOS 风格设计规范变量
+ * 基于 admin 端设计规范.md 中的 iOS 风格要求
+ */
+
+/* 颜色变量 - iOS 系统配色 */
+// 主色调 - iOS 系统蓝
+$uni-color-primary: #007AFF;
+$uni-color-primary-hover: #0A84FF;
+$uni-color-primary-light: rgba(0, 122, 255, 0.10);
+
+// 功能色
+$uni-color-success: #34C759;
+$uni-color-warning: #FF9F0A;
+$uni-color-error: #FF3B30;
+$uni-color-info: #5AC8FA;
+
+/* 文字基本颜色 - iOS 风格 */
+$uni-text-color: #1D1D1F; // 主标题色
+$uni-text-color-secondary: #6E6E73; // 次级文本
+$uni-text-color-tertiary: #8E8E93; // 辅助文本
+$uni-text-color-placeholder: #C7C7CC; // 占位符
+$uni-text-color-disable: #C7C7CC; // 禁用态
+$uni-text-color-inverse: #FFFFFF; // 反色
+
+/* 背景颜色 - iOS 风格 */
+$uni-bg-color: #FFFFFF;
+$uni-bg-color-page: #F5F5F7; // 页面背景
+$uni-bg-color-grey: #F2F2F7; // 分组背景
+$uni-bg-color-hover: #F2F2F7; // 点击状态颜色
+$uni-bg-color-mask: rgba(0, 0, 0, 0.4); // 遮罩颜色
+$uni-bg-color-secondary: rgba(255, 255, 255, 0.72); // 次级背景
+
+/* 边框颜色 - iOS 风格 */
+$uni-border-color: rgba(60, 60, 67, 0.18);
+$uni-border-color-light: rgba(60, 60, 67, 0.12);
+$uni-border-color-lighter: rgba(60, 60, 67, 0.08);
+$uni-border-color-extra-light: rgba(60, 60, 67, 0.05);
+
+/* 尺寸变量 - iOS 风格 */
+
+/* 文字尺寸 */
+$uni-font-size-sm: 24rpx; // 12px - 超小说明
+$uni-font-size-base: 28rpx; // 14px - 正文
+$uni-font-size-lg: 32rpx; // 16px - 大标题
+$uni-font-size-xl: 40rpx; // 20px - 区块标题
+$uni-font-size-xxl: 56rpx; // 28px - 页面主标题
+
+/* 图片尺寸 */
+$uni-img-size-sm: 40rpx;
+$uni-img-size-base: 52rpx;
+$uni-img-size-lg: 80rpx;
+
+/* Border Radius - iOS 风格圆角 */
+$uni-border-radius-xs: 8rpx; // 4px - 小圆角
+$uni-border-radius-sm: 10rpx; // 5px - 按钮/输入框
+$uni-border-radius-base: 12rpx; // 6px - 中等圆角
+$uni-border-radius-lg: 16rpx; // 8px - 卡片
+$uni-border-radius-xl: 20rpx; // 10px - 大卡片/弹窗
+$uni-border-radius-circle: 50%;
+
+/* 水平间距 - iOS 8pt 栅格系统 */
+$uni-spacing-row-sm: 16rpx; // 8px
+$uni-spacing-row-base: 24rpx; // 12px
+$uni-spacing-row-lg: 32rpx; // 16px
+$uni-spacing-row-xl: 48rpx; // 24px
+
+/* 垂直间距 */
+$uni-spacing-col-sm: 16rpx; // 8px
+$uni-spacing-col-base: 24rpx; // 12px
+$uni-spacing-col-lg: 32rpx; // 16px
+$uni-spacing-col-xl: 48rpx; // 24px
+
+/* 阴影 - iOS 轻阴影风格 */
+$uni-shadow-sm: 0 2rpx 10rpx rgba(0, 0, 0, 0.04);
+$uni-shadow-base: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+$uni-shadow-lg: 0 8rpx 30rpx rgba(0, 0, 0, 0.08);
+
+/* 透明度 */
+$uni-opacity-disabled: 0.3; // 组件禁用态的透明度
+
+/* 文章场景相关 */
+$uni-color-title: #1D1D1F; // 文章标题颜色
+$uni-font-size-title: 40rpx;
+$uni-color-subtitle: #6E6E73; // 二级标题颜色
+$uni-font-size-subtitle: 36rpx;
+$uni-color-paragraph: #1D1D1F; // 文章段落颜色
+$uni-font-size-paragraph: 28rpx;
+
+/* 组件尺寸 - iOS 风格 */
+$uni-button-height: 88rpx; // 44px
+$uni-button-height-sm: 72rpx; // 36px
+$uni-input-height: 88rpx; // 44px
+$uni-cell-height: 100rpx; // 50px
+
+/* 状态标签颜色 - iOS 柔和配色 */
+$tag-bg-success: rgba(52, 199, 89, 0.10);
+$tag-text-success: #34C759;
+$tag-bg-warning: rgba(0, 122, 255, 0.10);
+$tag-text-warning: #007AFF;
+$tag-bg-error: rgba(255, 59, 48, 0.10);
+$tag-text-error: #FF3B30;
+$tag-bg-info: rgba(90, 200, 250, 0.10);
+$tag-text-info: #5AC8FA;

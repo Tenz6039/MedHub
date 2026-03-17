@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medhub.mapper.MedicineSpecMapper">
+
+    <insert id="insertBath" useGeneratedKeys="true" keyProperty="id">
+        insert into medicine_spec (medicine_id, name, value) values
+        <foreach collection="specs" item="spec" separator=",">
+            (#{spec.medicineId}, #{spec.name}, #{spec.value})
+        </foreach>
+    </insert>
+
+    <delete id="deleteByMedicineIds">
+        delete from medicine_spec where medicine_id in
+        <foreach collection="list" item="medicineId" open="(" separator="," close=")">
+            #{medicineId}
+        </foreach>
+    </delete>
+
+</mapper>

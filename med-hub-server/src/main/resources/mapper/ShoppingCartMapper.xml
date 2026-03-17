@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medhub.mapper.ShoppingCartMapper">
+    <select id="list" resultType="com.medhub.entity.ShoppingCart">
+        select * from shopping_cart
+        <where>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="medicineId != null">
+                and medicine_id = #{medicineId}
+            </if>
+            <if test="comboId != null">
+                and combo_id = #{comboId}
+            </if>
+            <if test="medicineSpec != null">
+                 and medicine_spec = #{medicineSpec}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        insert into shopping_cart (name, user_id, medicine_id, combo_id, medicine_spec, number, amount, image, create_time)
+        values
+        <foreach collection="list" item="sc" separator=",">
+            (#{sc.name}, #{sc.userId}, #{sc.medicineId}, #{sc.comboId}, #{sc.medicineSpec}, #{sc.number}, #{sc.amount}, #{sc.image}, #{sc.createTime})
+        </foreach>
+    </insert>
+
+</mapper>

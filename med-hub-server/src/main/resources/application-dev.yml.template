@@ -1,0 +1,27 @@
+# 配置模板文件 - 请复制此文件为 application-dev.yml 并填入实际值
+# 注意：application-dev.yml 已被 .gitignore 忽略，不会提交到仓库
+
+med-hub:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: med_hub
+    username: root
+    password: ${YOUR_DB_PASSWORD}  # 替换为您的数据库密码
+  
+  alioss:
+    endpoint: oss-cn-wuhan-lr.aliyuncs.com  # 替换为您的 OSS  Endpoint
+    access-key-id: ${YOUR_OSS_ACCESS_KEY_ID}  # 替换为您的 OSS AccessKey ID
+    access-key-secret: ${YOUR_OSS_ACCESS_KEY_SECRET}  # 替换为您的 OSS AccessKey Secret
+    bucket-name: tenz6039  # 替换为您的 OSS Bucket 名称
+  
+  redis:
+    host: localhost
+    port: 6379
+    password:  # 如有密码请填写
+    database: 0
+
+  wechat:
+    appid: ${YOUR_WECHAT_APPID}  # 替换为您的微信小程序 AppID
+    secret: ${YOUR_WECHAT_SECRET}  # 替换为您的微信小程序 Secret
