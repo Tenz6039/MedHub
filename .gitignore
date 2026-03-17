@@ -87,13 +87,6 @@ config/database.json
 **/jwt-config.json
 **/token.properties
 
-# 密码文件
-**/password*
-**/passwd*
-**/credentials*
-**/auth.properties
-**/auth-config.json
-
 # API 密钥
 **/api-key.json
 **/apikey.properties
