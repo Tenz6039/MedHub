@@ -115,9 +115,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
      */
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
-        // 配置前缀映射，将前端的 /api/admin 映射到后端的 /admin
-        configurer.addPathPrefix("/api", c -> c.isAnnotationPresent(org.springframework.web.bind.annotation.RequestMapping.class) 
-            && c.getAnnotation(org.springframework.web.bind.annotation.RequestMapping.class).value()[0].startsWith("/admin"));
+        // 不配置前缀映射，直接使用原始路径
     }
 
     /**
