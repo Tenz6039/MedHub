@@ -11,6 +11,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Set;
 
 /**
  * 优惠券管理
@@ -31,6 +34,21 @@ public class CouponController {
     
     @Autowired
     private CouponService couponService;
+    
+    @Autowired
+    private RedisTemplate redisTemplate;
+    
+    /**
+     * 删除优惠券缓存
+     * @param pattern 缓存 key 模式
+     */
+    private void deleteCouponCache(String pattern) {
+        Set redisKeys = redisTemplate.keys(pattern);
+        if (redisKeys != null && !redisKeys.isEmpty()) {
+            redisTemplate.delete(redisKeys);
+            log.info("删除优惠券缓存：pattern={}, 删除数量={}", pattern, redisKeys.size());
+        }
+    }
 
     /**
      * 创建优惠券
@@ -42,6 +60,7 @@ public class CouponController {
     public Result<Long> createCoupon(@RequestBody CouponCreateDTO couponCreateDTO) {
         log.info("创建优惠券：{}", couponCreateDTO);
         Long couponId = couponService.createCoupon(couponCreateDTO);
+        deleteCouponCache("coupon_available_list_*");
         return Result.success(couponId);
     }
 
@@ -55,6 +74,7 @@ public class CouponController {
     public Result updateCoupon(@RequestBody CouponEditDTO couponEditDTO) {
         log.info("修改优惠券：{}", couponEditDTO);
         couponService.updateCoupon(couponEditDTO);
+        deleteCouponCache("coupon_available_list_*");
         return Result.success();
     }
 
@@ -68,6 +88,7 @@ public class CouponController {
     public Result deleteCoupon(@PathVariable Long id) {
         log.info("删除优惠券：{}", id);
         couponService.deleteCoupon(id);
+        deleteCouponCache("coupon_available_list_*");
         return Result.success();
     }
 
@@ -108,6 +129,7 @@ public class CouponController {
     public Result updateStatus(@PathVariable Integer status, Long id) {
         log.info("修改优惠券状态：id={}, status={}", id, status);
         couponService.updateStatus(id, status);
+        deleteCouponCache("coupon_available_list_*");
         return Result.success();
     }
 }

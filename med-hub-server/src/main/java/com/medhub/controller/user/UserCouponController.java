@@ -13,6 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -30,6 +31,9 @@ public class UserCouponController {
 
     @Autowired
     private UserCouponService userCouponService;
+    
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 可领取优惠券列表
@@ -39,8 +43,34 @@ public class UserCouponController {
     @GetMapping("/available")
     @ApiOperation("可领取优惠券列表")
     public Result<PageResult> availableList(CouponPageQueryDTO couponPageQueryDTO) {
-        log.info("可领取优惠券列表：{}", couponPageQueryDTO);
-        PageResult pageResult = userCouponService.availableList(couponPageQueryDTO);
+        String redisKey = "coupon_available_list_" + couponPageQueryDTO.getPage() + "_" + couponPageQueryDTO.getPageSize();
+        
+        PageResult pageResult = null;
+        try {
+            pageResult = (PageResult) redisTemplate.opsForValue().get(redisKey);
+        } catch (Exception e) {
+            redisTemplate.delete(redisKey);
+            log.warn("Redis 缓存反序列化失败，已删除缓存：{}", redisKey);
+            pageResult = null;
+        }
+        
+        if (pageResult != null && pageResult.getRecords() != null && !pageResult.getRecords().isEmpty()) {
+            log.info("从 Redis 缓存获取可领取优惠券列表：{}", redisKey);
+            return Result.success(pageResult);
+        }
+        
+        log.info("从数据库查询可领取优惠券列表：{}", couponPageQueryDTO);
+        pageResult = userCouponService.availableList(couponPageQueryDTO);
+    
+        if (pageResult != null && pageResult.getRecords() != null && !pageResult.getRecords().isEmpty()) {
+            try {
+                redisTemplate.opsForValue().set(redisKey, pageResult);
+                log.info("可领取优惠券列表缓存到 Redis 成功：{}", redisKey);
+            } catch (Exception e) {
+                log.error("Redis 缓存失败：{}", e.getMessage());
+            }
+        }
+        
         return Result.success(pageResult);
     }
 
